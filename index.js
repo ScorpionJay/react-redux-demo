@@ -2,17 +2,19 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import App from './containers/App'
+import Routers from './routers'
 import todoApp from './reducers/reducers'
 
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, hashHistory } from 'react-router'
 
 import configureStore from './stores';
-// let store = createStore(todoApp)
+
+require('./sass/_main')
+
 const store = configureStore();
 render(
   <Provider store={store}>
-    <App/>
+    <Router history={hashHistory} routes={Routers} />
   </Provider>,
   document.getElementById('root')
 )
